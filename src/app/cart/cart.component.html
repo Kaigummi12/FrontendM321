@@ -1,0 +1,9 @@
+<h2>Warenkorb</h2>
+<ul>
+  <li *ngFor="let product of cart$ | async">
+    {{ product.name }} - {{ product.price | currency:'CHF ' }}
+  </li>
+</ul>
+<p><strong>Gesamt:</strong> {{ totalPrice | currency:'CHF ' }}</p>
+<button (click)="clearCart()">Warenkorb leeren</button>
+<button routerLink="/order-summary">Zur Bestellung</button>

@@ -1,0 +1,8 @@
+<h2>Produktliste</h2>
+<ul>
+  <li *ngFor="let product of products$ | async">
+    {{ product.name }} - {{ product.price | currency:'CHF ' }}
+    <button (click)="deleteProduct(product.id)">Löschen</button>
+    <button (click)="addToCart(product)">Zum Warenkorb hinzufügen</button>
+  </li>
+</ul>

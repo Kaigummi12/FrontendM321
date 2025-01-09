@@ -1,0 +1,12 @@
+<h2>Produkt hinzufügen</h2>
+<form (ngSubmit)="addProduct()">
+  <label>
+    Name:
+    <input [(ngModel)]="product.name" name="name" required>
+  </label>
+  <label>
+    Preis:
+    <input type="number" [(ngModel)]="product.price" name="price" required>
+  </label>
+  <button type="submit">Hinzufügen</button>
+</form>
