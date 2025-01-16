@@ -1,4 +1,7 @@
-<div *ngFor="let product of products">
-  <p>{{ product.name }} - {{ product.price | currency:'CHF ' }}</p>
-  <button (click)="productService.addToCart(product)">In den Warenkorb</button>
+<div class="product-container">
+  <div *ngFor="let product of products" class="product-item">
+    <h3>{{ product.name }}</h3>
+    <p>{{ product.price | currency:'CHF ' }}</p>
+    <button (click)="productService.addToCart(product)">In den Warenkorb</button>
+  </div>
 </div>

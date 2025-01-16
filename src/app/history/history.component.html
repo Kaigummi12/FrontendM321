@@ -1,13 +1,23 @@
-<div *ngFor="let order of orders; let i = index">
-  <div>
-    <p>Bestellung #{{ order.id }} - {{ order.date | date: 'short' }} - Gesamt: {{ order.total | currency:'CHF' }}</p>
-    <button (click)="toggleProducts(i)">Produkte anzeigen</button>
+<div class="order-history">
+  <div *ngFor="let order of orders" class="order-card">
+    <div class="order-header">
+      <h3>Bestellung #{{ order.id }}</h3>
+      <p>{{ order.date | date: 'short' }}</p>
+      <button class="toggle-btn" (click)="toggleDetails(order.id)">Details anzeigen</button>
+    </div>
 
-    <!-- Dropdown mit bestellten Produkten -->
-    <div *ngIf="showProducts[i]">
-      <ul>
-        <li *ngFor="let product of order.items">{{ product.name }} - {{ product.price | currency:'CHF' }}</li>
-      </ul>
+    <div *ngIf="order.showDetails" class="order-details">
+      <p><strong>Gesamtbetrag:</strong> {{ order.totalPrice | currency: 'CHF' }}</p>
+
+      <!-- Bestellte Produkte mit Preis anzeigen -->
+      <div class="order-items">
+        <p><strong>Bestellte Produkte:</strong></p>
+        <ul>
+          <li *ngFor="let product of order.product">
+            {{ product.name }} - {{ product.price | currency: 'CHF' }}
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

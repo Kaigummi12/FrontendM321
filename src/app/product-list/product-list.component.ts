@@ -9,8 +9,8 @@ import { Product } from '../product.model';
 export class ProductListComponent {
   products: Product[] = [];
 
-  constructor(public productService: ProductService) { 
-    // Hinzufügen der neuen Produkte
+  constructor(public productService: ProductService) {
+    // Hinzufügen der Produkte
     this.products = [
       { id: 1, name: 'Grafikkarte', price: 800 },
       { id: 2, name: 'CPU', price: 500 },
