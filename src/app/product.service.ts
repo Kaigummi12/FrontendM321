@@ -1,14 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Product } from './product.model';
-
-interface Order {
-  id: number;
-  date: Date;
-  total: number;
-  items: Product[];
-  paymentMethod: string;
-}
+import { Order } from './order.model';
 
 @Injectable({
   providedIn: 'root',
@@ -26,40 +19,38 @@ export class ProductService {
 
   constructor() {}
 
-  // Produkte hinzufügen
+  // Methode, um Produkte hinzuzufügen
   addProduct(product: Product): void {
-    product.id = this.products.length + 1; // Neue ID zuweisen
     this.products.push(product);
     this.productsSubject.next(this.products);
   }
 
-  // Produkt zum Warenkorb hinzufügen
+  // Methode, um Produkte zum Warenkorb hinzuzufügen
   addToCart(product: Product): void {
     this.cart.push(product);
     this.cartSubject.next(this.cart);
   }
 
-  // Bestellung abschließen
+  // Methode, um den Warenkorb zu leeren
+  clearCart(): void {
+    this.cart = [];
+    this.cartSubject.next(this.cart);
+  }
+
+  // Methode, um eine Bestellung abzuschließen
   completeOrder(paymentMethod: string): void {
     const order: Order = {
       id: this.orders.length + 1,
       date: new Date(),
       total: this.cart.reduce((sum, product) => sum + product.price, 0),
-      items: this.cart,
-      paymentMethod,
+      items: [...this.cart], // Speichern der bestellten Produkte
     };
     this.orders.push(order);
     this.clearCart();
   }
 
-  // Bestellhistorie abrufen
+  // Methode, um den Bestellverlauf zu bekommen
   getOrderHistory(): Order[] {
     return this.orders;
-  }
-
-  // Warenkorb leeren
-  clearCart(): void {
-    this.cart = [];
-    this.cartSubject.next(this.cart);
   }
 }

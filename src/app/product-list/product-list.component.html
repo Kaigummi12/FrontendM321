@@ -1,17 +1,4 @@
-<div>
-  <h2>Produktliste</h2>
-  
-  <ul>
-    <li *ngFor="let product of products">
-      {{ product.name }} - {{ product.price | currency: 'CHF' }}
-      <button (click)="addToCart(product)">In den Warenkorb</button>
-    </li>
-  </ul>
-
-  <h3>Neues Produkt hinzufügen</h3>
-  <label>Name:</label>
-  <input [(ngModel)]="newProduct.name" placeholder="Name des Produkts" />
-  <label>Preis:</label>
-  <input [(ngModel)]="newProduct.price" type="number" placeholder="Preis des Produkts" />
-  <button (click)="addProduct()">Produkt Hinzufügen</button>
+<div *ngFor="let product of products">
+  <p>{{ product.name }} - {{ product.price | currency:'CHF ' }}</p>
+  <button (click)="productService.addToCart(product)">In den Warenkorb</button>
 </div>

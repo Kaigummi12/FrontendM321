@@ -1,6 +1,13 @@
-<h2>Bestellverlauf</h2>
-<ul>
-  <li *ngFor="let order of orders">
-    Bestellung #{{ order.id }} - {{ order.date | date: 'short' }}
-  </li>
-</ul>
+<div *ngFor="let order of orders; let i = index">
+  <div>
+    <p>Bestellung #{{ order.id }} - {{ order.date | date: 'short' }} - Gesamt: {{ order.total | currency:'CHF' }}</p>
+    <button (click)="toggleProducts(i)">Produkte anzeigen</button>
+
+    <!-- Dropdown mit bestellten Produkten -->
+    <div *ngIf="showProducts[i]">
+      <ul>
+        <li *ngFor="let product of order.items">{{ product.name }} - {{ product.price | currency:'CHF' }}</li>
+      </ul>
+    </div>
+  </div>
+</div>

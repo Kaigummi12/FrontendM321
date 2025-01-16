@@ -22,11 +22,11 @@ export class OrderSummaryComponent {
 
   completeOrder() {
     if (this.selectedPaymentMethod) {
-      this.productService.completeOrder(this.selectedPaymentMethod); // Zahlungsmethode übergeben
+      this.productService.completeOrder(this.selectedPaymentMethod);
       alert('Bestellung erfolgreich abgeschlossen!');
-      this.router.navigate(['/success']);
+      this.router.navigate(['/history']);
     } else {
-      alert('Bitte Zahlungsmethode auswählen!');
+      alert('Bitte wählen Sie eine Zahlungsmethode.');
     }
   }
 }

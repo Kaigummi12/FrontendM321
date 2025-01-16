@@ -8,27 +8,17 @@ import { Product } from '../product.model';
 })
 export class ProductListComponent {
   products: Product[] = [];
-  newProduct: Product = { id: 0, name: '', price: 0 };
 
-  constructor(private productService: ProductService) {
-    // Hole die Produktliste vom Service
-    this.productService.products$.subscribe((products) => {
-      this.products = products;
-    });
-  }
-
-  // Methode zum Hinzufügen eines Produkts
-  addProduct(): void {
-    if (this.newProduct.name && this.newProduct.price > 0) {
-      this.productService.addProduct(this.newProduct);
-      this.newProduct = { id: 0, name: '', price: 0 }; // Zurücksetzen nach dem Hinzufügen
-    } else {
-      alert('Bitte alle Felder ausfüllen!');
-    }
-  }
-
-  // Methode, um Produkt in den Warenkorb zu legen
-  addToCart(product: Product): void {
-    this.productService.addToCart(product); // Produkt zum Warenkorb hinzufügen
+  constructor(public productService: ProductService) { 
+    // Hinzufügen der neuen Produkte
+    this.products = [
+      { id: 1, name: 'Grafikkarte', price: 800 },
+      { id: 2, name: 'CPU', price: 500 },
+      { id: 3, name: 'RAM', price: 200 },
+      { id: 4, name: 'Mainboard', price: 400 },
+      { id: 5, name: 'Maus', price: 50 },
+      { id: 6, name: 'Headset', price: 40 },
+      { id: 7, name: 'Mikrofon', price: 60 },
+    ];
   }
 }
