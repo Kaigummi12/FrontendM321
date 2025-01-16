@@ -1,24 +1,36 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { AppRoutingModule } from './app-routing.module';
+import { RouterModule, Routes } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './product-list/product-list.component';
-import { ProductFormComponent } from './product-form/product-form.component';
 import { CartComponent } from './cart/cart.component';
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
-import { SuccessComponent } from './success/success.component';
+import { HistoryComponent } from './history/history.component';
+
+const routes: Routes = [
+  { path: '', component: ProductListComponent },
+  { path: 'cart', component: CartComponent },
+  { path: 'order-summary', component: OrderSummaryComponent },
+  { path: 'history', component: HistoryComponent },
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
-    ProductFormComponent,
     CartComponent,
     OrderSummaryComponent,
-    SuccessComponent,
+    HistoryComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    RouterModule.forRoot(routes),
+    CommonModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

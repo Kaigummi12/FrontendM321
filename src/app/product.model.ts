@@ -3,3 +3,10 @@ export interface Product {
   name: string;
   price: number;
 }
+
+export interface Order {
+  id: number;
+  date: Date;
+  total: number;
+  items: Product[];
+}

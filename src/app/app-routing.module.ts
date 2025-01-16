@@ -4,14 +4,15 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { CartComponent } from './cart/cart.component';
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
-import { SuccessComponent } from './success/success.component';
+import { HistoryComponent } from './history/history.component';
 
 const routes: Routes = [
-  { path: '', component: ProductListComponent },
-  { path: 'add-product', component: ProductFormComponent },
+  { path: '', redirectTo: '/product-form', pathMatch: 'full' },
+  { path: 'product-list', component: ProductListComponent },
+  { path: 'product-form', component: ProductFormComponent },
   { path: 'cart', component: CartComponent },
   { path: 'order-summary', component: OrderSummaryComponent },
-  { path: 'success', component: SuccessComponent },
+  { path: 'history', component: HistoryComponent }, // Verlauf hinzugefügt
 ];
 
 @NgModule({

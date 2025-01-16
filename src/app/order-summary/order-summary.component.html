@@ -1,21 +1,20 @@
-<h2>Bestellübersicht</h2>
-<ul>
-  <li *ngFor="let product of cart$ | async">
-    {{ product.name }} - {{ product.price | currency:'CHF ' }}
-  </li>
-</ul>
-<p><strong>Gesamt:</strong> {{ totalPrice | currency:'CHF ' }}</p>
+<div>
+  <h2>Bestellübersicht</h2>
+  
+  <ul>
+    <li *ngFor="let product of cart$ | async">
+      {{ product.name }} - {{ product.price | currency: 'CHF' }}
+    </li>
+  </ul>
 
-<h3>Zahlungsmethode</h3>
-<form (ngSubmit)="completeOrder()">
-  <label>
-    <input type="radio" name="payment" [(ngModel)]="selectedPaymentMethod" value="Visa" required> Visa
-  </label>
-  <label>
-    <input type="radio" name="payment" [(ngModel)]="selectedPaymentMethod" value="PayPal"> PayPal
-  </label>
-  <label>
-    <input type="radio" name="payment" [(ngModel)]="selectedPaymentMethod" value="Krypto"> Krypto
-  </label>
-  <button type="submit">Bestellung abschliessen</button>
-</form>
+  <p><strong>Gesamt:</strong> {{ totalPrice | currency: 'CHF' }}</p>
+
+  <label>Zahlungsmethode:</label>
+  <select [(ngModel)]="selectedPaymentMethod">
+    <option value="Kreditkarte">Kreditkarte</option>
+    <option value="PayPal">PayPal</option>
+    <option value="Banküberweisung">Banküberweisung</option>
+  </select>
+
+  <button (click)="completeOrder()">Bestellung abschließen</button>
+</div>

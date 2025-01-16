@@ -21,8 +21,12 @@ export class OrderSummaryComponent {
   }
 
   completeOrder() {
-    alert(`Bestellung abgeschlossen mit Zahlungsmethode: ${this.selectedPaymentMethod}`);
-    this.productService.clearCart(); // Warenkorb leeren
-    this.router.navigate(['/success']); // Weiterleitung zum Success-Screen
+    if (this.selectedPaymentMethod) {
+      this.productService.completeOrder(this.selectedPaymentMethod); // Zahlungsmethode übergeben
+      alert('Bestellung erfolgreich abgeschlossen!');
+      this.router.navigate(['/success']);
+    } else {
+      alert('Bitte Zahlungsmethode auswählen!');
+    }
   }
 }

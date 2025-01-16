@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ProductService } from '../product.service';
-import { Observable } from 'rxjs';
 import { Product } from '../product.model';
 
 @Component({
@@ -8,17 +7,28 @@ import { Product } from '../product.model';
   templateUrl: './product-list.component.html',
 })
 export class ProductListComponent {
-  products$: Observable<Product[]>;
+  products: Product[] = [];
+  newProduct: Product = { id: 0, name: '', price: 0 };
 
   constructor(private productService: ProductService) {
-    this.products$ = this.productService.products$;
+    // Hole die Produktliste vom Service
+    this.productService.products$.subscribe((products) => {
+      this.products = products;
+    });
   }
 
-  deleteProduct(id: number) {
-    this.productService.deleteProduct(id);
+  // Methode zum Hinzufügen eines Produkts
+  addProduct(): void {
+    if (this.newProduct.name && this.newProduct.price > 0) {
+      this.productService.addProduct(this.newProduct);
+      this.newProduct = { id: 0, name: '', price: 0 }; // Zurücksetzen nach dem Hinzufügen
+    } else {
+      alert('Bitte alle Felder ausfüllen!');
+    }
   }
 
-  addToCart(product: Product) {
-    this.productService.addToCart(product);
+  // Methode, um Produkt in den Warenkorb zu legen
+  addToCart(product: Product): void {
+    this.productService.addToCart(product); // Produkt zum Warenkorb hinzufügen
   }
 }

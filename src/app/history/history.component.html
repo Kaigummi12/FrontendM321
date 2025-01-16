@@ -1,0 +1,6 @@
+<h2>Bestellverlauf</h2>
+<ul>
+  <li *ngFor="let order of orders">
+    Bestellung #{{ order.id }} - {{ order.date | date: 'short' }}
+  </li>
+</ul>
