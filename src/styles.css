@@ -4,14 +4,15 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f8f9fa;
     color: #333;
+    line-height: 1.6;
 }
 
 /* Header-Stile */
 header {
     background-color: #4caf50;
     color: white;
-    padding: 10px 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 nav {
@@ -25,12 +26,15 @@ nav {
     color: white;
     font-size: 18px;
     padding: 10px 20px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+    border-radius: 30px;
+    /* Runde Links */
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .nav-link:hover {
     background-color: #45a049;
+    transform: scale(1.1);
+    /* Leichter Hover-Effekt */
 }
 
 /* Main-Bereich */
@@ -41,25 +45,28 @@ main {
 /* Buttons */
 button {
     margin: 10px;
-    padding: 10px 15px;
+    padding: 12px 20px;
     font-size: 16px;
     font-weight: bold;
     color: white;
     background-color: #4caf50;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px;
+    /* Runde Buttons */
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
 }
 
 button:hover {
     background-color: #45a049;
     transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 button:active {
     background-color: #3e8e41;
     transform: translateY(0);
+    box-shadow: none;
 }
 
 /* Listen-Elemente */
@@ -70,19 +77,28 @@ ul {
 
 li {
     margin: 10px 0;
-    padding: 10px;
+    padding: 15px;
     background-color: #ffffff;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 10px;
+    /* Runde Listen-Elemente */
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 li button {
     margin-left: 10px;
 }
 
+/* Strong-Elemente */
 strong {
     font-weight: bold;
 }
@@ -94,4 +110,86 @@ strong {
     margin-right: 5px;
     color: white;
     display: inline-block;
+}
+
+/* Zusätzliche Stile für Formular-Elemente */
+input[type="text"],
+input[type="number"],
+select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    /* Runde Eingabefelder */
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0 6px rgba(76, 175, 80, 0.4);
+}
+
+/* Karten-Stil */
+.card {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    /* Runde Ecken für Karten */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer */
+footer {
+    margin-top: 20px;
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px 10px 0 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+    }
+
+    .nav-link {
+        margin-bottom: 10px;
+    }
+
+    li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    li button {
+        margin-top: 10px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    button {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+
+    li {
+        padding: 10px;
+    }
+
+    .card {
+        padding: 15px;
+    }
 }
